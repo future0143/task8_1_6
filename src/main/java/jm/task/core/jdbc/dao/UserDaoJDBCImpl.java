@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 @NoArgsConstructor
 public class UserDaoJDBCImpl extends Util implements UserDao {
-
+    @Override
     public void createUsersTable() throws SQLException {
         String sql ="CREATE TABLE IF NOT EXISTS Users (id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255) NOT NULL, lastName VARCHAR(255) NOT NULL, age INT NOT NULL)";
 
@@ -21,7 +21,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             e.printStackTrace();
         }
     }
-
+    @Override
     public void dropUsersTable() throws SQLException {
         String sql = "DROP TABLE Users";
 
@@ -33,7 +33,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             e.printStackTrace();
         }
     }
-
+    @Override
     public void saveUser(String name, String lastName, byte age) throws SQLException {
         String sql = "INSERT INTO USERS(name, lastName,age) VALUES (?,?,?)";
 
@@ -49,7 +49,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             e.printStackTrace();
         }
     }
-
+    @Override
     public void removeUserById(long id) throws SQLException {
         String sql = "DELETE FROM Users WHERE id = ?";
 
@@ -63,7 +63,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             e.printStackTrace();
         }
     }
-
+    @Override
     public List<User> getAllUsers() throws SQLException {
         List<User> list = new ArrayList<>();
         String sql = "SELECT * FROM Users";
@@ -85,7 +85,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         }
         return list;
     }
-
+    @Override
     public void cleanUsersTable() throws SQLException {
         String sql = "DELETE FROM Users";      //или "TRUNCATE TABLE Users"
 
